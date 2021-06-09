@@ -9,11 +9,22 @@
   <title>Meme Generator</title>
 </head>
 
-<body>
+<body onload="init()">
+  <div onclick="showCanvas()" class="image-gallery">IMAGE GALLERY</div>
   <div class="canvas-container">
-    <canvas width="500" height="500"></canvas>
+    <canvas class="canvas" width="500" height="500"></canvas>
+    <div class="canvas-control">
+      <input class="first-text" type="text" name="text">
+      <input class="second-text" type="text" name="text" hidden>
+      <button class="btn-add-text" onclick="draw()">Add text</button>
+      <button class="btn-remove">Remove</button>
+      <button class="btn-add-text" onclick="draw(220, 470)">Add another text</button>
+      <button class="btn-swipe">Swipe</button>
+    </div>
   </div>
 
+  <script src="js/canvas-service.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>
