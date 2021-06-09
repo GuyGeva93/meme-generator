@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+.canvas-container {
+  MARGIN: 0 auto;
+  display: flex;
+  width: 70vh;
+  justify-content: center;
+  border: 1px solid black;
+}
