@@ -103,7 +103,6 @@ function loadImages(id) {
   return imageIdx;
 }
 
-
 function drawImg(imgId) {
   let img = new Image();
   img.src = gImgs[imgId - 1].url;
@@ -111,3 +110,4 @@ function drawImg(imgId) {
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
   }
 }
+//sdfsdffsd
