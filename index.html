@@ -10,16 +10,24 @@
 </head>
 
 <body onload="init()">
-  <div onclick="showCanvas()" class="image-gallery">IMAGE GALLERY</div>
-  <div class="canvas-container">
-    <canvas class="canvas" width="500" height="500"></canvas>
-    <div class="canvas-control">
-      <input class="first-text" type="text" name="text">
-      <input class="second-text" type="text" name="text" hidden>
-      <button class="btn-add-text" onclick="draw()">Add text</button>
-      <button class="btn-remove">Remove</button>
-      <button class="btn-add-text" onclick="draw(220, 470)">Add another text</button>
-      <button class="btn-swipe">Swipe</button>
+  <div class="main-container">
+    <div class="nav-bar">
+      <h2>MEME-GENERATOR</h2>
+      <button class="btn-gallery">Gallery</button>
+    </div>
+    <div class="images-container">
+      <!-- renderGallery() -->
+    </div>
+    <div class="canvas-container">
+      <canvas class="canvas" width="500" height="500"></canvas>
+      <div class="canvas-control">
+        <input class="first-text" type="text" name="text">
+        <input class="second-text" type="text" name="text">
+        <button class="btn-add-text" onclick="draw()">Add text</button>
+        <button class="btn-remove" onclick=onRemoveLine()>Remove</button>
+        <button class="btn-add-text" onclick="draw(250, 470)">Add another text</button>
+        <button class="btn-swipe">Swipe</button>
+      </div>
     </div>
   </div>
 

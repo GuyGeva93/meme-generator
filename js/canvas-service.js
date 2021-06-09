@@ -1,14 +1,5 @@
-var gMeme = {
-  selectedImgId: 5,
-  selectedLineIdx: 0,
-  lines: [{
-    txt: 'I never eat Falafel',
-    size: 20,
-    align: 'left',
-    color: 'red'
-  }]
-}
 
+var gMeme = [];
 var gImgs = [{
   id: 1,
   url: 'img/1.jpg'
@@ -68,36 +59,55 @@ var gImgs = [{
 }
 ]
 
-var gTextId = 0;
-var gTexts;
 
-function getTextId() {
-  return ++gTextId;
-}
-
-function createText(text) {
-  let tempTxt = {
-    id: getTextId(),
-    text
+function createMeme(imgId, txt, selectedLineIdx = 0, size = 30, align = 'center', color = 'black') {
+  let meme = {
+    selectedImgId: imgId,
+    selectedLineIdx,
+    lines: [
+      {
+        txt,
+        size,
+        align,
+        color
+      }
+    ]
   }
-  return tempTxt;
-}
-function createTexts(text) {
-  gTexts.push(createText(currTxt));
-  console.log(gTexts);
+  gMeme.push(meme);
 }
 
+function drawText(text, x = 250, y = 60) {
+  gCtx.lineWidth = 2;
+  gCtx.strokeStyle = gMeme.lines[0].color;
+  gCtx.fillStyle = 'white';
+  gCtx.font = gMeme.lines[0].size + 'px impact';
+  gCtx.textAlign = gMeme.lines[0].align;
+  gCtx.fillText(gMeme.lines[0].txt, x, y);
+  gCtx.strokeText(gMeme.lines[0].txt, x, y);
+}
 
-function loadImages() {
-  gImgs.forEach(img => {
-    drawImgFromSameDomain(img);
+function removeLine() {
+  gMeme.lines[0].txt = '';
+  gCtx.fillText(gMeme.lines[0].txt, 250, 60);
+  gCtx.strokeText(gMeme.lines[0].txt, 250, 60);
+}
+
+function getImgs() {
+  return gImgs;
+}
+
+function loadImages(id) {
+  let imageIdx = gImgs.findIndex(img => {
+    return (img.selectedImgId === id);
   })
+  return imageIdx;
 }
 
-function drawImgFromSameDomain(img) {
-  let currImg = new Image();
-  currImg.src = img.url;
-  currImg.onload = () => {
-    gCtx.drawImage(currImg, 0, 0, gCanvas.width, gCanvas.height);
+
+function drawImg(imgId) {
+  let img = new Image();
+  img.src = gImgs[imgId - 1].url;
+  img.onload = () => {
+    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
   }
 }
