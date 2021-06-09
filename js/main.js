@@ -29,5 +29,7 @@ function showCanvas(imgId) {
   let elCanvas = document.querySelector('.canvas-container');
   elMain.style.display = 'none';
   elCanvas.style.display = 'flex';
+  createMeme(imgId);
   drawImg(imgId);
+  updateCurrImg(imgId);
 }

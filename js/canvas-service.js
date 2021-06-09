@@ -58,9 +58,10 @@ var gImgs = [{
   url: 'img/18.jpg'
 }
 ]
+var gCurrImg;
 
 
-function createMeme(imgId, txt, selectedLineIdx = 0, size = 30, align = 'center', color = 'black') {
+function createMeme(imgId, txt = '', selectedLineIdx = 0, size = 30, align = 'center', color = 'black') {
   let meme = {
     selectedImgId: imgId,
     selectedLineIdx,
@@ -77,19 +78,18 @@ function createMeme(imgId, txt, selectedLineIdx = 0, size = 30, align = 'center'
 }
 
 function drawText(text, x = 250, y = 60) {
+  updateText(text);
   gCtx.lineWidth = 2;
-  gCtx.strokeStyle = gMeme.lines[0].color;
+  gCtx.strokeStyle = gMeme[gCurrImg].lines[0].color;
   gCtx.fillStyle = 'white';
-  gCtx.font = gMeme.lines[0].size + 'px impact';
-  gCtx.textAlign = gMeme.lines[0].align;
-  gCtx.fillText(gMeme.lines[0].txt, x, y);
-  gCtx.strokeText(gMeme.lines[0].txt, x, y);
+  gCtx.font = gMeme[gCurrImg].lines[0].size + 'px impact';
+  gCtx.textAlign = gMeme[gCurrImg].lines[0].align;
+  gCtx.fillText(gMeme[gCurrImg].lines[0].txt, x, y);
+  gCtx.strokeText(gMeme[gCurrImg].lines[0].txt, x, y);
 }
 
-function removeLine() {
-  gMeme.lines[0].txt = '';
-  gCtx.fillText(gMeme.lines[0].txt, 250, 60);
-  gCtx.strokeText(gMeme.lines[0].txt, 250, 60);
+function updateText(text) {
+  gMeme[gCurrImg].lines[0].txt = text;
 }
 
 function getImgs() {
@@ -110,4 +110,9 @@ function drawImg(imgId) {
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
   }
 }
-//sdfsdffsd
+
+function updateCurrImg(imgId) {
+  gCurrImg = gMeme.findIndex(meme => {
+    return meme.selectedImgId === imgId;
+  })
+}
