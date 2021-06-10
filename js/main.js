@@ -16,6 +16,7 @@ function renderGallery() {
 
 function draw() {
   let elTextInput = document.querySelector('input[name=text]');
+  if (!elTextInput.value) return;
   // const offsetX = ev.offsetX;
   // const offsetY = ev.offsetY;
   drawText(elTextInput.value);
@@ -30,4 +31,11 @@ function showCanvas(imgId) {
   createMeme(imgId);
   drawImg(imgId);
   updateCurrImg(imgId);
+}
+
+function onNavToGallery() {
+  let elMain = document.querySelector('.images-container');
+  let elCanvas = document.querySelector('.canvas-container');
+  elMain.style.display = 'grid';
+  elCanvas.style.display = 'none';
 }

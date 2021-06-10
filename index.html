@@ -13,7 +13,7 @@
   <div class="main-container">
     <div class="nav-bar">
       <h2>MEME-GENERATOR</h2>
-      <button class="btn-gallery">Gallery</button>
+      <button class="btn-gallery" onclick="onNavToGallery()">Gallery</button>
     </div>
     <div class="images-container">
       <!-- renderGallery() -->
@@ -22,10 +22,8 @@
       <canvas class="canvas" width="500" height="500"></canvas>
       <div class="canvas-control">
         <input class="text-input" type="text" name="text" placeholder="Insert some text..">
-        <!-- <input class="second-text" type="text" name="text"> -->
-        <button class="btn-add-text" onclick="draw()">A</button>
-        <button class="btn-remove" onclick=onRemoveLine()>R</button>
-        <button class="btn-add-text" onclick="draw()">+</button>
+        <button class="btn-add-text" onclick="draw()"><img src="icons/add.png" alt="add"></button>
+        <button class="btn-remove" onclick=onRemoveLine()><img src="icons/delete.png" alt="remove"></button>
         <button class="btn-swipe">S</button>
       </div>
     </div>
