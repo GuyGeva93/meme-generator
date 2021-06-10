@@ -99,21 +99,19 @@ function createMeme(imgId, txt = '', selectedLineIdx = 0, size = 30, align = 'ce
 }
 
 function drawText(text) {
-  setText(text);
-  setLineColor();
-  setLineFont();
+  updateMeme(text);
   gCtx.lineWidth = 2;
   gCtx.strokeStyle = getLineColor();
   gCtx.fillStyle = 'white';
-  gCtx.font = `${gMeme[gCurrImg].lines[gCurrLine].size} px Impact`;
+  gCtx.font = `30px Impact`;
   gCtx.textAlign = gMeme[gCurrImg].lines[gCurrLine].align;
   gCtx.fillText(getText(), getX(), getY());
   gCtx.strokeText(getText(), getX(), getY());
   updateCurrLine();
 }
 
-function setLineColor() {
-
+function updateMeme(text) {
+  gMeme[gCurrImg].lines[gCurrLine].txt = text;
 }
 
 function getLineColor() {
@@ -125,6 +123,9 @@ function getLineFont() {
 }
 
 function setText(text) {
+  if (gCurrLine) gMeme[gCurrImg].lines.push({
+
+  })
   gMeme[gCurrImg].lines[gCurrLine].txt = text;
 }
 

@@ -22,7 +22,6 @@ function draw() {
   elTextInput.value = '';
 }
 
-
 function showCanvas(imgId) {
   let elMain = document.querySelector('.images-container');
   let elCanvas = document.querySelector('.canvas-container');
