@@ -39,3 +39,7 @@ function onNavToGallery() {
   elMain.style.display = 'grid';
   elCanvas.style.display = 'none';
 }
+
+function onDownloadCanvas(elLink) {
+  downloadCanvas(elLink);
+}

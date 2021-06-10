@@ -16,6 +16,10 @@ button {
   cursor: pointer;
 }
 
+a {
+  text-decoration: none;
+}
+
 .main-container {
   display: grid;
   height: 90vh;
@@ -118,4 +122,13 @@ button {
 
 .btn-remove img, .btn-add-text img {
   object-fit: none;
+}
+
+.btn-download-canvas {
+  grid-row: 4;
+  grid-column: 5/8;
+  font-size: 2rem;
+  /* background-color: #e7b32f; */
+  color: #FFF;
+  border-radius: 10px;
 }
