@@ -1,3 +1,5 @@
+var gCanvas;
+var gCtx;
 
 var gMeme = [];
 var gImgs = [{
@@ -59,9 +61,26 @@ var gImgs = [{
 }
 ]
 var gCurrImg;
+var gCurrLine;
+var gLines = [{
+  x: 250,
+  y: 60
+}, {
+  x: 250,
+  y: 470
+}, {
+  x: 250,
+  y: 250
+}
+]
 
+function initCanvas() {
+  gCanvas = document.querySelector('canvas');
+  gCtx = gCanvas.getContext('2d');
+  gCurrLine = 0;
+}
 
-function createMeme(imgId, txt = '', selectedLineIdx = 0, size = 30, align = 'center', color = 'black') {
+function createMeme(imgId, txt = '', selectedLineIdx = 0, size = 30, align = 'center', color = 'black', x = 0, y = 0) {
   let meme = {
     selectedImgId: imgId,
     selectedLineIdx,
@@ -70,30 +89,62 @@ function createMeme(imgId, txt = '', selectedLineIdx = 0, size = 30, align = 'ce
         txt,
         size,
         align,
-        color
+        color,
+        x,
+        y
       }
     ]
   }
   gMeme.push(meme);
 }
 
-function drawText(text, x = 250, y = 60) {
-  updateText(text);
+function drawText(text) {
+  setText(text);
+  setLineColor();
+  setLineFont();
   gCtx.lineWidth = 2;
-  gCtx.strokeStyle = gMeme[gCurrImg].lines[0].color;
+  gCtx.strokeStyle = getLineColor();
   gCtx.fillStyle = 'white';
-  gCtx.font = gMeme[gCurrImg].lines[0].size + 'px impact';
-  gCtx.textAlign = gMeme[gCurrImg].lines[0].align;
-  gCtx.fillText(gMeme[gCurrImg].lines[0].txt, x, y);
-  gCtx.strokeText(gMeme[gCurrImg].lines[0].txt, x, y);
+  gCtx.font = `${gMeme[gCurrImg].lines[gCurrLine].size} px Impact`;
+  gCtx.textAlign = gMeme[gCurrImg].lines[gCurrLine].align;
+  gCtx.fillText(getText(), getX(), getY());
+  gCtx.strokeText(getText(), getX(), getY());
+  updateCurrLine();
 }
 
-function updateText(text) {
-  gMeme[gCurrImg].lines[0].txt = text;
+function setLineColor() {
+
+}
+
+function getLineColor() {
+  return gMeme[gCurrImg].lines[gCurrLine].color;
+}
+
+function getLineFont() {
+  return `${gMeme[gCurrImg].lines[gCurrLine].size} px Impact`;
+}
+
+function setText(text) {
+  gMeme[gCurrImg].lines[gCurrLine].txt = text;
+}
+
+function getText() {
+  return gMeme[gCurrImg].lines[gCurrLine].txt;
 }
 
 function getImgs() {
   return gImgs;
+}
+
+function getX() {
+  return gLines[gCurrLine].x;
+}
+function getY() {
+  return gLines[gCurrLine].y;
+}
+
+function updateCurrLine() {
+  gCurrLine++;
 }
 
 function loadImages(id) {

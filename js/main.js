@@ -2,8 +2,7 @@ var gCanvas;
 var gCtx;
 
 function init() {
-  gCanvas = document.querySelector('canvas');
-  gCtx = gCanvas.getContext('2d');
+  initCanvas();
   renderGallery();
 }
 
@@ -15,11 +14,11 @@ function renderGallery() {
   })
 }
 
-function draw(x, y) {
+function draw() {
   let elTextInput = document.querySelector('input[name=text]');
   // const offsetX = ev.offsetX;
   // const offsetY = ev.offsetY;
-  drawText(elTextInput.value, x, y);
+  drawText(elTextInput.value);
   elTextInput.value = '';
 }
 
