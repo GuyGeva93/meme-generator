@@ -12,21 +12,32 @@
 <body onload="init()">
   <div class="main-container">
     <div class="nav-bar">
-      <h2>MEME-GENERATOR</h2>
+      <h2 class="nav-bar-h2">MEME-GENERATOR</h2>
       <button class="btn-gallery" onclick="onNavToGallery()">Gallery</button>
     </div>
     <div class="images-container">
       <!-- renderGallery() -->
     </div>
     <div class="canvas-container">
-      <canvas class="canvas" width="500" height="500"></canvas>
+      <canvas class="canvas" width="500" height="500" onmousedown="onCanvasClick(event)"
+        onmouseup="onTextMove(event)"></canvas>
       <div class="canvas-control">
         <input class="text-input" type="text" name="text" placeholder="Insert some text..">
-        <button class="btn-add-text" onclick="draw()"><img src="icons/add.png" alt="add"></button>
+        <button class="btn-add" onclick="draw()"><img src="icons/add.png" alt="add"></button>
         <button class="btn-remove" onclick=onRemoveLine()><img src="icons/delete.png" alt="remove"></button>
-        <button class="btn-swipe">S</button>
-        <!-- <a href="#"><button class="btn-download-canvas" onclick="onDownloadCanvas(this)">D</button></a> -->
-        <a href="#" class="btn-download-canvas" onclick="onDownloadCanvas(this)" download="my-meme.jpg">Download</a>
+        <button class="btn-swipe" onclick="onSwitchLines()"><img src="./icons/arrow-down.png"><img
+            src="./icons/arrow-up.png"></button>
+        <div class="line-control">
+          <button class="btn-inc-font" onclick="onIncFont()">A+</button>
+          <!-- <img src="./icons/a-plus.png"> -->
+          <!-- <img src="./icons/a-minus.png"> -->
+          <button class="btn-dec-font" onclick="onDecFont()">A-</button>
+          <button class="btn-align-l" onclick="onAlignLeft()"><img src="./icons/align-left.png"></button>
+          <button class="btn-align-c" onclick="onAlignCenter()"><img src="./icons/align-center.png"></button>
+          <button class="btn-align-r" onclick="onAlignRight()"><img src="./icons/align-right.png"></button>
+        </div>
+        <a href="#" class="btn-download-canvas" onclick="onDownloadCanvas(this)" download="my-meme.jpg">
+          <img src="./icons/download.png"> Download</a>
       </div>
     </div>
   </div>

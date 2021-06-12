@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 * {
   box-sizing: border-box;
 }
@@ -5,11 +6,7 @@
 body {
   margin: 0;
   background-color: rgb(37, 31, 31);
-}
-
-img {
-  width: 100%;
-  height: 100%;
+  font-family: 'Do Hyeon', sans-serif;
 }
 
 button {
@@ -34,6 +31,11 @@ a {
   grid-template-columns: repeat(6, 180px);
 }
 
+.images-container img {
+  width: 100%;
+  height: 100%;
+}
+
 .img-cell {
   box-shadow: 0px 0px 4px 1px #be9222;
 }
@@ -46,13 +48,19 @@ a {
   background-color: #e7b32f;
 }
 
+.nav-bar-h2 {
+  margin-inline-start: 60px;
+  font-size: 2rem;
+}
+
 .btn-gallery {
   width: 100px;
   height: 50px;
   border: none;
   background-color: inherit;
   margin-inline-end: 60px;
-  font-size: 1.2rem;
+  font-family: 'Do Hyeon', sans-serif;
+  font-size: 2rem;
 }
 
 .btn-gallery:hover {
@@ -74,7 +82,7 @@ a {
   display: grid;
   justify-content: center;
   gap: 10px;
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: 80px 80px 100px 100px 1fr;
   grid-template-columns: repeat(11, 1fr);
   align-items: center;
   width: 500px;
@@ -98,15 +106,15 @@ a {
   width: 60px;
   height: 60px;
   border-radius: 10px;
-  font-size: 3rem;
 }
 
 .btn-swipe {
   grid-row: 2;
   grid-column: 4;
+  background-color: #22a3c3;
 }
 
-.btn-add-text {
+.btn-add {
   grid-row: 2;
   grid-column: 6;
   background-color: #2ea946;
@@ -124,11 +132,69 @@ a {
   object-fit: none;
 }
 
-.btn-download-canvas {
-  grid-row: 4;
-  grid-column: 5/8;
+.canvas-control .line-control {
+  grid-row: 3;
+  grid-column: 2/11;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-inc-font {
   font-size: 2rem;
-  /* background-color: #e7b32f; */
+}
+
+.btn-dec-font {
+  font-size: 2rem;
+}
+
+/*
+.btn-align-l {}
+
+.btn-align-c {}
+
+.btn-align-r {}  */
+
+.btn-download-canvas {
+  grid-row: 5;
+  grid-column: 7/11;
+  font-size: 2rem;
+  background-color: #8F44BB;
   color: #FFF;
   border-radius: 10px;
+  text-align: center;
+}
+
+@media (max-width:1160px) {
+  .images-container {
+    justify-content: center;
+    grid-template-columns: repeat(3, 180px);
+  }
+}
+
+@media (max-width:1060px) {
+  .canvas-container {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .nav-bar {
+    justify-self: center;
+  }
+}
+
+@media (max-width:600px) {
+  .images-container {
+    justify-content: center;
+    grid-template-columns: repeat(2, 180px);
+    grid-template-rows: repeat(9, 180px);
+  }
+  .nav-bar-h2, .btn-gallery {
+    font-size: 1.2rem;
+  }
+  .nav-bar {
+    justify-self: center;
+  }
+  .canvas-control {
+    width: 400px;
+    justify-items: center;
+  }
 }
