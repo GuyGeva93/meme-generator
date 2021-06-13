@@ -83,7 +83,7 @@ function createMeme(imgId) {
 
   let meme = {
     selectedImgId: imgId,
-    selectedLineIdx: 0,
+    selectedLineIdx: -1,
     lines: []
   }
   gMeme = meme;
@@ -98,6 +98,7 @@ function getMeme() {
 }
 
 function createLine(txt, size = 30, align = 'center', color = 'black') {
+  updateLineIdx();
   let line = {
     txt,
     size,
@@ -123,7 +124,7 @@ function drawLine() {
   gCtx.textAlign = getALign();
   gCtx.fillText(getText(), getX(), getY());
   gCtx.strokeText(getText(), getX(), getY());
-  updateLineIdx();
+
 }
 
 function renderLines() {
@@ -162,7 +163,6 @@ function getColor() {
 
 function setColor(color) {
   gMeme.lines[gMeme.selectedLineIdx].color = color;
-  //renderLine()
 }
 
 function getSize() {
